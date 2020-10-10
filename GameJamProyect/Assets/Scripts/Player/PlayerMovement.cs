@@ -2,51 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
+    Rigidbody rb;
     Vector3 movement;
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-
+        rb = GetComponent<Rigidbody>();
     }
-
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         GetMovement();
-        if(CanMakeStep())
-        {
-          //  Debug.Log("Moving");
-        }
+        Move();
+       
     }
-
     void GetMovement()
     {
-        movement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+        movement = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
     }
 
-    bool CanMakeStep()
+    void Move()
     {
-       Debug.Log(movement.sqrMagnitude);
-        if (movement.sqrMagnitude >= .01f)
-        { 
-            NavMeshHit hit;
-            movement = movement + transform.position * Time.deltaTime * speed;
-            bool isValid = NavMesh.SamplePosition(movement, out hit, .3f, NavMesh.AllAreas);
-            if (isValid)
-            {
-                if ((transform.position - hit.position).magnitude >= 0.02f)
-                {
-                    transform.position = hit.position;
-                    Debug.Log("Movinga");
-                }
-                    
-            }
-            return isValid;
-        }
-        return false;
+        Vector3 newVelocity = movement * speed * Time.deltaTime;
+
+        rb.velocity = newVelocity;
     }
 }
