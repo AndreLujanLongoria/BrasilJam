@@ -2,22 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-[RequireComponent(typeof(Rigidbody), typeof(AudioSource))]
+[RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float speed;
-    [SerializeField] AudioClip hospitalMovementAudio;
-    [SerializeField] AudioClip carpetMovementAudio;
-    [SerializeField] AudioClip woodMovementAudio;
 
+    [SerializeField] GameObject characterHolder;
+    [SerializeField] GameObject characterWalk;
+    [SerializeField] GameObject characterIdle;
     Rigidbody rb;
-    AudioSource audioSource;
+
     Vector3 movement;
+    [HideInInspector] public bool moving;
+    GameObject currentObject;
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        audioSource = GetComponent<AudioSource>();
-        audioSource.clip = hospitalMovementAudio;
+        ChangeCharacter(TypeCharacter.WALK);
     }
     void FixedUpdate()
     {
@@ -28,39 +29,49 @@ public class PlayerMovement : MonoBehaviour
     void GetMovement()
     {
         Vector2 axisValues = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Debug.Log(axisValues.magnitude);
-        if (axisValues.magnitude != 0&&!audioSource.isPlaying)
-            audioSource.Play();
+       
+        if (axisValues.magnitude != 0)
+        {
+            ChangeCharacter(TypeCharacter.WALK);
+            CheckRotation(axisValues);
+        }            
+        else
+            ChangeCharacter(TypeCharacter.IDLE);
+        moving = axisValues.magnitude != 0;
         movement = new Vector3(axisValues.x, 0, axisValues.y);
 
-
-
     }
-
+    void CheckRotation(Vector2 axisValue)
+    {
+        if (axisValue.x < 0)
+            currentObject.transform.localEulerAngles = new Vector3(0, 0, 0);
+        else
+            currentObject.transform.localEulerAngles = new Vector3(0, 180, 0);
+    }
     void Move()
     {
+        characterHolder.transform.LookAt(Camera.main.transform);
         Vector3 newVelocity = movement * speed * Time.deltaTime;
 
         rb.velocity = newVelocity;
     }
-
-    public void SetNewMovent(FloorMaterial floor)
+    void ChangeCharacter(TypeCharacter typeCharacter)
     {
-        switch (floor)
+        switch (typeCharacter)
         {
-            case FloorMaterial.WOOD:
-                audioSource.clip = woodMovementAudio;
+            case TypeCharacter.IDLE:
+                characterWalk.SetActive(false);
+                characterIdle.SetActive(true);
+                currentObject = characterIdle;
                 break;
-            case FloorMaterial.CARPET:
-                audioSource.clip = carpetMovementAudio;
-                break;
-            case FloorMaterial.HOSPITAL:
-                audioSource.clip = hospitalMovementAudio;
+            case TypeCharacter.WALK:
+                characterWalk.SetActive(true);
+                characterIdle.SetActive(false);
+                currentObject = characterWalk;
                 break;
             default:
                 break;
         }
     }
 }
-
-public enum FloorMaterial { WOOD, CARPET, HOSPITAL }
+public enum TypeCharacter { IDLE, WALK };
