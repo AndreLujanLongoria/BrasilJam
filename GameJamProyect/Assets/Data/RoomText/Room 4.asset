@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f236874b47b0f46bf73c08b9aaa123, type: 3}
-  m_Name: Text 4
+  m_Name: Room 4
   m_EditorClassIdentifier: 
-  text: 4 Texto Objeto
+  text: El sentimiento de malestar parece irse cuando tomo esos dulces sin sabor

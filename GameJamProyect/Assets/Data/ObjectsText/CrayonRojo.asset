@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f236874b47b0f46bf73c08b9aaa123, type: 3}
-  m_Name: Text 3
+  m_Name: CrayonRojo
   m_EditorClassIdentifier: 
-  text: 3 Texto Objeto
+  text: Si no hay nada Mejor

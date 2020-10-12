@@ -6,6 +6,9 @@ using UnityEngine;
 public abstract class InteractableObject : MonoBehaviour
 {
     [SerializeField] RoomFaseType[] hide;
+    [SerializeField] string narrativeName;
+    [SerializeField] NarrativeCollection narrative;
+    [SerializeField] AudioSource audiosSource;
     public abstract void DoInteraction(GameObject player = null);
     public  void ActivateObject(RoomFaseType roomFase = RoomFaseType.FIRST)
     {
@@ -21,12 +24,21 @@ public abstract class InteractableObject : MonoBehaviour
 
     bool CanActivateObject(RoomFaseType fase)
     {
+       
         for (int i = 0; i < hide.Length; i++)
         {
             if (fase == hide[i])
                 return false;
         }
         return true;
+    }
+    protected void ShowNarrative()
+    {
+        narrative.ShowText(narrativeName, NarrativeEvent.OBJECT);
+    }
+    protected void PlayAudio()
+    {
+        audiosSource.Play();
     }
 }
 

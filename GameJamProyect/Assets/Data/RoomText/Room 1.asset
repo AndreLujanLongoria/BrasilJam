@@ -10,6 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f236874b47b0f46bf73c08b9aaa123, type: 3}
-  m_Name: Text 1
+  m_Name: Room 1
   m_EditorClassIdentifier: 
-  text: 1 Texto Objeto
+  text: "La habitaci\xF3n se muestra como tantas veces para revelar que los contornos
+    de las paredes y la misma cama siguen all\xED. Una habitaci\xF3n descolorida
+    que da una sensaci\xF3n de encierro en el cual solo una puerta, que sabes bien
+    hace mucho no abres, parece ser la forma de salir. \r\n"

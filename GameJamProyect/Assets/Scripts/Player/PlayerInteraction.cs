@@ -7,6 +7,10 @@ public class PlayerInteraction : MonoBehaviour
     InteractableObject objectToInteract;
     bool canInteract;
 
+    private void Start()
+    {
+        canInteract = false;
+    }
     // Update is called once per frame
     void Update()
     {

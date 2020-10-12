@@ -10,6 +10,7 @@ public class TransportationInteraction : InteractableObject
     public override void DoInteraction(GameObject player = null)
     {
         RoomLogic.currentFase = nextFase;
+        Debug.Log(RoomLogic.currentFase);
         roomLogic.ChangeFase(nextRoom);
     }
 

@@ -8,6 +8,7 @@ public class DoorInteraction : InteractableObject
     [SerializeField] GameObject secondObjectKinder;
     public override void DoInteraction(GameObject player = null)
     {
+        PlayAudio();
         //Fisrt Fase in hospital
         if (RoomFaseType.FIRST == RoomLogic.currentFase)
         {
