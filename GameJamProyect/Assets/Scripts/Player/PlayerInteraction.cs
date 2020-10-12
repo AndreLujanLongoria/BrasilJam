@@ -14,7 +14,12 @@ public class PlayerInteraction : MonoBehaviour
         {
             Debug.Log("Can Interact");
             if (Input.GetKeyDown(KeyCode.E))
+            {
                 objectToInteract.DoInteraction(transform.gameObject);
+                objectToInteract = null;
+                canInteract = false;
+            }
+                
         }
     }
 
