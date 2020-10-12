@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f236874b47b0f46bf73c08b9aaa123, type: 3}
   m_Name: Room 3
   m_EditorClassIdentifier: 
-  text: "Aunque le d\xE9 color a mis recuerdos la habitaci\xF3n parece ser la misma\u2026"
+  text: "\xBFPor qu\xE9 no puedo salir de esta habitaci\xF3n? \u2026. cada d\xEDa
+    pierdo la esperanza de ser libre de mi mente.\r\n"

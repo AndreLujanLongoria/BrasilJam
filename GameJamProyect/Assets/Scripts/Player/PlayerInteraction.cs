@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class PlayerInteraction : MonoBehaviour
 {
+    public GameObject pickPosition;
     InteractableObject objectToInteract;
     bool canInteract;
-
+    [HideInInspector]public bool pickedObject;
     private void Start()
     {
+        pickedObject = false;
         canInteract = false;
     }
     // Update is called once per frame
     void Update()
     {
-        if(canInteract)
+        if (canInteract&&objectToInteract!=null)
         {
             Debug.Log("Can Interact");
             if (Input.GetKeyDown(KeyCode.E))
@@ -23,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
                 objectToInteract = null;
                 canInteract = false;
             }
-                
+
         }
     }
 

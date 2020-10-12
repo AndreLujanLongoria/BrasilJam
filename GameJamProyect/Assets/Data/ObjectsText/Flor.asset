@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f236874b47b0f46bf73c08b9aaa123, type: 3}
   m_Name: Flor
   m_EditorClassIdentifier: 
-  text: Me gusta mucho el color de esta flor
+  text: Este es el final del juego, Gracias por jugar

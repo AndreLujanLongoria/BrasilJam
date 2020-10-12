@@ -23,6 +23,18 @@ public class RoomLogic : MonoBehaviour
     public void ChangeFase(Room nextRoom)
     {
         int dialogue = (int)currentFase;
+        Debug.Log(currentFase);
+        if (currentFase == RoomFaseType.SECOND)
+        {
+            dialogue = 1;
+        }
+        else if (currentFase == RoomFaseType.THIRD)
+        {
+            dialogue = 2;
+        }
+
+        if (dialogue < 3 && narrative != null)
+            narrative.ShowText(dialogue, NarrativeEvent.ROOM);
         switch (nextRoom)
         {
             case Room.HOSPITAL:
@@ -38,9 +50,8 @@ public class RoomLogic : MonoBehaviour
             default:
                 break;
         }
-        dialogue = dialogue >= 4 ? 3 : dialogue;
-        if (dialogue < 3&& narrative != null)
-            narrative.ShowText(dialogue, NarrativeEvent.ROOM);
+      
+
     }
 
 }

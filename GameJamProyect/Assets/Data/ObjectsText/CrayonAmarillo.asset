@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 06f236874b47b0f46bf73c08b9aaa123, type: 3}
-  m_Name: CartaDeMama
+  m_Name: CrayonAmarillo
   m_EditorClassIdentifier: 
-  text: Necesito buscar crayones para dibujar
+  text: Este si me gusta

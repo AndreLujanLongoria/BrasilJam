@@ -17,13 +17,10 @@ public class DoorInteraction : InteractableObject
         //Second Fase In Hospital
         else if (RoomFaseType.THIRD == RoomLogic.currentFase)
         {
-            secondObjectKinder.SetActive(true);
+            firstObjectKinder.SetActive(false);
+            ShowNarrative("Flor");
         }
-        //Third and final fase in Hospital
-        else if (RoomFaseType.FIFTH == RoomLogic.currentFase)
-        {
-            Debug.Log("Final");
-        }
+       
     }
 
 

@@ -36,6 +36,10 @@ public abstract class InteractableObject : MonoBehaviour
     {
         narrative.ShowText(narrativeName, NarrativeEvent.OBJECT);
     }
+    protected void ShowNarrative(string name)
+    {
+        narrative.ShowText(name, NarrativeEvent.OBJECT);
+    }
     protected void PlayAudio()
     {
         audiosSource.Play();
